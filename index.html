@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <title>US Healthcare Sentiment Analysis</title>
+</head>
+<body>
+    <div id="intromain">
+        <section id="scrollyintro">
+            <figure>
+                <img id="introimg" src="images/landing-page.png" >
+            </figure>
+
+            <article>
+                <div class="step" data-step="1">
+                    <h2>On December 4, 2024, a shocking event captured the nation's attention: the CEO of UnitedHealthcare, Brian Thompson, was murdered in Manhattan.</h2>
+                </div>
+                <div class="step" data-step="2">
+                    <h2>Yet, the public's reaction was unsettlingly numb, with many cracking jokes about his death.</h2>
+                </div>
+                <div class="step" data-step="3"></div>
+                <div class="step" data-step="4"></div>
+                <div class="step" data-step="5"></div>
+                <div class="step" data-step="6"></div>
+                <div class="step" data-step="7"></div>
+
+                
+                <div class="step" data-step="8">
+                    <h2>Instead, the spotlight shone on the suspected murderer, Luigi Mangione, who was elevated to a hero status across the internet, celebrated through countless memes and viral content.</h2>
+                    <!-- <p>
+                        This phenomenon of adoration towards a figure associated with such a violent act 
+                        may seem perplexing at first glance. However, we seek to 
+                        unravel the complex relationship between the public's sentiment and the deep-seated issues within 
+                        the American healthcare system, particularly focusing on the insurance sector dominated by giants 
+                        like <strong>UnitedHealthcare</strong>.
+                    </p> -->
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <div id="dissatisfaction-text">     
+        <h2>
+            How does the public's reaction to this murder reflect deeper issues within the American healthcare system, 
+            particularly in the insurance sector dominated by giants like UnitedHealthcare?
+        </h2>
+        <p>
+            This phenomenon of adoration towards a figure associated with such a violent act 
+            may seem perplexing at first glance. However, we seek to inspect various facets related 
+            to the complex relationship between the public's sentiment and the issues within the American 
+            healthcare system, particularly focusing on the industry-dominating <strong>UnitedHealthcare</strong>.
+        </p>
+    </div>
+
+    <main>
+        <section class="col">
+            <h2>Exploring the Discontent: Company Revenue vs. Healthcare Costs for Policyholders</h2>
+            
+            <div class="graphlegend new-gray">
+            <div class ="graphstogether graph-text">
+                <div class="graph" data-graph-type="line">
+                    <h3 class="graph-text"> Private Health Insurance Revenue Over Time in Billions</h3>
+                    <div class="buttoncontainer">
+                    </div>
+                    <svg class=""></svg>
+                </div>
+                <div class="graph" data-graph-type="premiumbar">
+                    <h3 class="graph-text"> Total U.S. Healthcare Spending Per Person Over Time </h3>
+                    <svg></svg>
+                    <div class="tooltip" style="opacity: 0;"></div>
+                </div>
+            </div>
+            <div class = "legend-items" id="checkboxes-container"></div>
+        </div>
+        </section>
+
+        <div id="heatmapdivdiv" style="margin-top: 10%;">
+            <div class="bodytext">
+                <h2>The Burden of Medical Debt</h2>
+                <h3 class="graph-text"> USA Median Medical Debt in <span id="output"> 2011 </span> is $<span id="national">830</span></h3>
+                <p>
+                    Diving deeper, the situation is exacerbated by the overwhelming medical debt that plagues many Americans. 
+                    Our visualizations depict how different states fare in terms of median medical debt. The median began 
+                    to slowly decrease after 2014 when the Affordable Care Act was expanded in all but 10 states.
+                    Despite some decreases following healthcare reforms, the persistent high levels of debt on top of 
+                    annual healthcare cost of $ 13,493 per person as shown in bar chart above underline a systemic failure to 
+                    protect the most vulnerable.
+                </p>
+            </div>
+            <div id="slider-container">
+                <input type="range" id="slider" class="slider" min="2011" max="2022" step="1" value="2011">
+                <div class="slider-ticks" id="slider-ticks"></div>
+                <div class="slider-labels" id="slider-labels"></div>
+            </div>
+            <div id="heatmapdiv"></div>
+            <div id="heat-legend">
+                <svg id="colorLegend" height="75" width="600"></svg>
+            </div>
+        </div>
+
+        <div class="middlepls" style="margin-top: 5%;">
+            <div class="bodytext">        
+                <h2>With healthcare cost and medical debt increasing, how is the quality of healthcare in United States?</h2>
+        
+                <p>Moreover, despite the United States outspending other developed nations on healthcare, our comparative analysis reveals a grim picture: the U.S. leads in avoidable deaths per 100,000 people. This stark reality illuminates a significant disconnect; higher spending does not equate to better healthcare outcomes. Instead, it often translates into higher profits for insurance companies at the expense of patient care.</p>
+            </div>
+        </div>
+
+        <h2> Comparison of Quality of Healthcare Factors Among Countries </h2>
+       
+        <section class="col">
+            <div class="graphlegend new-gray">
+            <div class="newgraphstogether graph-text">
+                    <div class="graph" data-graph-type="scatter1">
+                        <h3 class="graph-text">Percent of GDP Spent on Healthcare</h3>
+                        <svg id="svggdp"></svg>
+                    </div>
+                    <div id="tooltipGDP" class="tooltip" style="display: none;"></div>
+
+                    <div class="graph" data-graph-type="scatter2">
+                        <h3 class="graph-text">Avoidable Deaths per 100,000 people</h3>
+                        <svg id="svgavoid"></svg>
+                    </div>
+                    <div id="tooltipDeaths" class="tooltip" style="display: none;"></div>
+
+            </div>
+            <div class="legend-container newh3">
+                <div class="legend-items graph-text">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #FF0000;"></span>US
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #8a5d43;"></span>UK
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #f09200;"></span>GER
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #00b945;"></span>FRA
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #ed8cc0;"></span>JPN
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #5b2c83;"></span>KOR
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #59d5f7;"></span>NZ
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #e535ab;"></span>SWE
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #0f2080;"></span>CAN
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #f5e042;"></span>AUS
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <div class="middlepls" id="nobottom" style="margin-top: 10%;">
+            <div class="bodytext" style="position: sticky; top: 0;">
+                <h2>Exploring Denied Claims: Which company reaps the most benefits in 2023?
+                </h2>
+                <p>
+                    Following the scrutiny of healthcare quality, another critical issue emerges: the 
+                    alarming rate of denied claims by insurance companies. Let's delve into the denial patterns 
+                    among leading insurers, exploring how such practices boost their profits at the expense of consumers. 
+                    We aim to expose the struggles of policyholders who frequently have to fight for the coverage they paid 
+                    for and deserve. This ongoing battle not only exacerbates financial burdens but also deepens the 
+                    public's mistrust and resentment towards these powerful healthcare entities.
+                </p>
+            </div>
+        </div>
+        <section id="scrolly">
+            <article>
+                <div class="step" data-step="0">
+                    <div class="scale-labels">
+                        <h3>Kaiser Permanente</h3>
+                        <p>Reported Revenue in 2023: $100.8B</p>
+                        <p>Percent of denied claims: 7%</p>
+                        <p>
+                            One case shows a policyholder of Kaiser Permanente being denied therapy treatment for PTSD caused by 
+                            a car accident. She shared, "They denied my claim. I am out $300 a month for therapy when I pay for 
+                            health insurance that should cover it." (National Union of Healthcare Workers) 
+                            <!-- Source: https://nuhw.org/kaiser-dont-deny/patient-stories/ -->
+                        </p>
+                    </div>
+                </div>
+                <div class="step" data-step="1">
+                    <div class="scale-labels">
+                        <h3>Aetna</h3>
+                        <p>Reported Revenue in 2023: $186.8B </p>
+                        <p>Percent of denied claims: 20%</p>
+                        <p>
+                            Aetna is also guilty of denying claims for life-saving procedures. In one case, a policyholder shared "she was
+                            denied a CT Scan for months by Aetna. She shared that her doctor fought the good fight and appealed 
+                            again and again. Finally she got the scan she needed. But, by then, the cancer had spread. (WV Citizen Action Group)
+                             <!-- Source: https://wvcag.org/an-urgent-call-for-aetna-claim-denial-stories/ -->
+                        </p>
+                    </div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="scale-labels">
+                        <h3>Anthem Blue Cross and Blue Shield</h3>
+                        <p>Reported Revenue in 2023: $171.3B </p>
+                        <p>Percent of denied claims: 23%</p>
+                        <p>
+                            In another case of a denied claim, an Anthem policyholder shared they suffered from cardiac arrest, 
+                            for which she was transported to the closest possible hospital by air ambulance. She said, "If 
+                            it weren't for the helicopter, I'd be dead. They were denying the claim because it didn't get 
+                            preapproved." (Khou News)
+                            <!-- Source: https://www.khou.com/article/news/health/denied-insurance-company-unconscious-patient-
+                             failed-to-get-preapproval-life-saving-air-ambulance-emergency-medical/531-4ae8b22e-ee71-48f6-891a-
+                             2c858a8de5de -->
+                        </p>
+                    </div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="scale-labels">
+                        <h3>UnitedHealthcare</h3>
+                        <p>Reported Revenue in 2023: $371.6B Average</p>
+                        <p>Percent of denied claims: 32%</p>
+                        <p><strong>UnitedHealthcare displays the highest financial benefit from the highest rate of denied claims among competitors.</strong></p>
+                        <p>
+                            Taking a closer look, we see one patient share "[UnitedHealthcare] denied my surgery  
+                            two days before it was scheduled. I was in the hospital finance office in tears (when I was supposed to be at  
+                            the hospital doing pre-op stuff). My mother was flying out to see me. My surgeon spent a day and a half pleading  
+                            my case to United when she probably should have been taking care of her other patients." (CNN)
+                            <!-- Source: https://www.cnn.com/2024/12/06/business/insurance-claim-denials-unitedhealthcare-ceo/index.html -->
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <figure>
+                <div class="graph" data-graph-type="bar">
+                    <svg class="scales"></svg>
+                </div>
+            </figure>
+        </section>
+    </main>
+    <div style="display: flex; justify-content: center; margin-top: 50px;">
+        <p style="max-width: 700px;">
+            By inspecting these pain points, it becomes more clear how many issues Americans face in their 
+            health care, especially when compared with other dveloped countries. Among the various companies, UnitedHealthcare 
+            shows a pattern of high profit but poor service, from having the highest revenue among top insurance companies, to 
+            displaying the highest rates of denied claims. These growing issues shed light on the general public's outcry against 
+            UnitedHealthcare. 
+        </p>
+    </div>
+</div>
+    
+    <script src="js/scrolling-intro.js"></script>
+    <script src="js/companies-bar-charts.js"></script>
+    <script src="js/heatmap.js"></script>
+    <script src="js/countries-line-graph.js"></script>
+    <script src="js/scales-bar-graph.js"></script>
+</body>
+</html>
